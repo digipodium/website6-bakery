@@ -7,7 +7,45 @@
 
 
 {% block body %}
-    
+    <div class="container my-3">
+        <div class="row">
+            <div class="col">
+                <form>
+                    <div class="form-group">
+                      <label for="cat">Category</label>
+                      <select class="form-control" name="cat" id="cat">
+                        <option>CAKES</option>
+                        <option>PASTRIES</option>
+                        <option>BREADS</option>
+                        <option>SWEETS</option>
+                        <option>SNACKS</option>
+                      </select>
+                      <button class="btn btn-sm btn-outline-warning mt-1">filter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            {% for item in products %}
+            <div class="col-3"> 
+                <div class="card">
+                    <img class="card-img-top" src="{{item.image.url}}" alt="{{item.name}}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{item.name}}</h4>
+                        <p class="card-text">{{item.category}}</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <span><i class="fas fa-dollar-sign"></i> {{item.price}}</span>
+                        <button class="btn btn-success btn-sm">Buy now</button>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+                <h4>No Products in Bakery</h4>
+            {% endfor %}
+                
+        </div>
+    </div>
 {% endblock body %}
 
 
